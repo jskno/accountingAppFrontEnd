@@ -27,7 +27,10 @@ import { SalesInvoiceEditComponent } from './sales-invoices/sales-invoice-edit/s
 import { SalesInvoiceStartComponent } from './sales-invoices/sales-invoice-start/sales-invoice-start.component';
 import { SalesInvoicesListComponent } from './sales-invoices/sales-invoices-list/sales-invoices-list.component';
 import { SalesInvoiceItemComponent } from './sales-invoices/sales-invoices-list/sales-invoice-item/sales-invoice-item.component';
-import {HelperService} from "./services/helper.service";
+import {HelperService} from './services/helper.service';
+import {CompanyService} from './services/company.service';
+import {PurchaseInvoiceService} from './services/purchase-invoice.service';
+import {SalesInvoiceService} from './services/sales-invoice.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,12 @@ import {HelperService} from "./services/helper.service";
     HttpModule,
     AppRoutingModule
   ],
-  providers: [HelperService],
+  providers: [
+    HelperService,
+    CompanyService,
+    PurchaseInvoiceService,
+    SalesInvoiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
