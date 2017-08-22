@@ -1,18 +1,19 @@
+import {Company} from './company.model';
 export class SalesInvoice {
   public id: number;
   public invoiceNumber: string;
   public date: Date;
-  public cif: string;
+  public company: Company;
   public amount: number;
-  public iva: number;
+  public vat: number;
 
-  constructor(id: number, invoiceNumber: string, date: Date, cif: string, amount: number, iva: number) {
+  constructor(id: number, invoiceNumber: string, date: Date, company: Company, amount: number, vat: number) {
     this.id = id;
     this.invoiceNumber = invoiceNumber;
     this.date = date;
-    this.cif = cif;
+    this.company = company;
     this.amount = amount;
-    this.iva = iva;
+    this.vat = vat;
   }
 
 }

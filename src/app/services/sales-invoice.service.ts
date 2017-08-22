@@ -1,12 +1,15 @@
 import {SalesInvoice} from '../model/sales-invoice.model';
+import {Injectable} from '@angular/core';
+import {CompanyService} from './company.service';
 
+@Injectable()
 export class SalesInvoiceService {
   private salesInvoices: SalesInvoice[] = [
     new SalesInvoice(
       1,
       '1',
       new Date(),
-      'A000001',
+      this.companyService.getCompanyByCif('A000001'),
       100,
       21
     ),
@@ -14,11 +17,13 @@ export class SalesInvoiceService {
       2,
       '2',
       new Date(),
-      'A000002',
+      this.companyService.getCompanyByCif('A000003'),
       200,
       21
     ),
   ];
+
+  constructor(private companyService: CompanyService) {}
 
   getSalesInvoices() {
     return this.salesInvoices.slice();

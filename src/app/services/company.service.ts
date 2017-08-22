@@ -7,7 +7,7 @@ export class CompanyService {
     new Company(
       1,
       'AimHireRecruitment',
-      '24124qrqw',
+      'A000001',
       'Calle Aire',
       '32523532',
       'jskno@yahoo.es'
@@ -15,7 +15,7 @@ export class CompanyService {
     new Company(
       2,
       'Euipo Restaurant',
-      'asffasf323',
+      'A000002',
       'Calle Mar',
       '32523532',
       'alvaro@yahoo.es'
@@ -23,7 +23,7 @@ export class CompanyService {
     new Company(
       3,
       'Petroprix',
-      'B523532523',
+      'A000003',
       'Calle Fuego',
       '32523532',
       'raquel@yahoo.es'
@@ -36,6 +36,16 @@ export class CompanyService {
 
   getCompany(index: number) {
     return this.companies[index];
+  }
+
+  getCompanyByCif(cif: string) {
+    let theCompany = null;
+    this.getCompanies().forEach((company) => {
+      if (company.cif === cif) {
+        theCompany = company;
+      }
+    })
+    return theCompany;
   }
 
   save(company: Company) {

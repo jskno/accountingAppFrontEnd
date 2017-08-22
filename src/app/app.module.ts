@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import {CompaniesComponent} from './companies/companies.component';
 import {PurchaseInvoicesComponent} from './purchase-invoices/purchase-invoices.component';
 import {SalesInvoicesComponent} from './sales-invoices/sales-invoices.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
@@ -61,6 +61,7 @@ import {SalesInvoiceService} from './services/sales-invoice.service';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule
   ],
