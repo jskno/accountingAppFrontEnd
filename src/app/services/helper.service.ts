@@ -1,52 +1,20 @@
 import {ExpenseType} from '../model/expense-type.model';
 import {ExpensePeriod} from '../model/expense-period.model';
+import {EXPENSE_TYPES} from "../mock-data/mock-expense-type";
+import {EXPENSE_PERIODS} from "../mock-data/mock-expense-periods";
 export class HelperService {
-  expenseTypes: ExpenseType[] = [
-    {
-      'key': 0,
-      'value': 'Undefined',
-      'defaultValue': true
-    },
-    {
-      'key': 1,
-      'value': 'Combustible',
-      'defaultValue': false
-    },
-    {
-      'key': 2,
-      'value': 'Material Informatico',
-      'defaultValue': false
-    }
-  ];
-  expensePeriods: ExpensePeriod[] = [
-    {
-      'key': 0,
-      'value': 'Undefined',
-      'defaultValue': false
-    },
-    {
-      'key': 1,
-      'value': 'Gasto Corriente',
-      'defaultValue': true
-    },
-    {
-      'key': 2,
-      'value': 'Gasto de Inversion',
-      'defaultValue': false
-    }
-  ];
 
   getExpenseTypes() {
-    return this.expenseTypes.slice();
+    return EXPENSE_TYPES.slice();
   }
 
   getExpensePeriods() {
-    return this.expensePeriods.slice();
+    return EXPENSE_PERIODS.slice();
   }
 
   getDefaultExpenseType() {
     let defaultType;
-    this.expenseTypes.forEach(type => {
+    this.getExpenseTypes().forEach(type => {
       if (type.defaultValue) {
         defaultType = type;
       }
@@ -56,7 +24,7 @@ export class HelperService {
 
   getDefaultExpensePeriod() {
     let defaultType;
-    this.expensePeriods.forEach(type => {
+    this.getExpensePeriods().forEach(type => {
       if (type.defaultValue) {
         defaultType = type;
       }
@@ -66,7 +34,7 @@ export class HelperService {
 
   getExpenseTypeByKey(key: number) {
     let theExpenseType;
-    this.expenseTypes.forEach(type => {
+    this.getExpenseTypes().forEach(type => {
       if (type.key === key) {
         theExpenseType = type;
       }
@@ -76,7 +44,7 @@ export class HelperService {
 
   getExpensePeriodByKey(key: number) {
     let theExpensePeriod;
-    this.expensePeriods.forEach(type => {
+    this.getExpensePeriods().forEach(type => {
       if (type.key === key) {
         theExpensePeriod = type;
       }

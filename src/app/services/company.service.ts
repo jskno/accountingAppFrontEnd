@@ -1,57 +1,65 @@
 import {Company} from '../model/company.model';
 import {Subject} from 'rxjs/Subject';
+import {COMPANIES} from '../mock-data/mock-companies';
 
 export class CompanyService {
   companiesChanged = new Subject();
-  companies: Company[] = [
-    new Company(
-      1,
-      'AimHireRecruitment',
-      'A000001',
-      'Calle Aire',
-      '32523532',
-      'jskno@yahoo.es'
-    ),
-    new Company(
-      2,
-      'Euipo Restaurant',
-      'A000002',
-      'Calle Mar',
-      '32523532',
-      'alvaro@yahoo.es'
-    ),
-    new Company(
-      3,
-      'Petroprix',
-      'A000003',
-      'Calle Fuego',
-      '32523532',
-      'raquel@yahoo.es'
-    )
-  ];
 
-  getCompanies() {
-    return this.companies.slice();
+  getCompanies(): Promise<Company[]> {
+    return Promise.resolve(COMPANIES.slice());
   }
 
-  getCompany(index: number) {
-    return this.companies[index];
+  getCompaniesSlowly(): Promise<Company[]> {
+    return new Promise(resolve => {
+      // Simulate server latency with 2 secs
+      setTimeout(() =>
+      resolve(this.getCompanies()), 2000);
+    });
+  }
+
+  getCompanyById(id: number) {
+    let theCompany = null;
+    this.getCompanies().then(
+        companies => companies.forEach(
+          (company) => {
+            if (company.id === id) {
+              theCompany = company;
+            }
+        })
+    );
+    return theCompany;
   }
 
   getCompanyByCif(cif: string) {
     let theCompany = null;
-    this.getCompanies().forEach((company) => {
-      if (company.cif === cif) {
-        theCompany = company;
-      }
-    })
+    this.getCompanies().then(
+      companies => companies.forEach(
+        (company) => {
+          if (company.cif === cif) {
+            theCompany = company;
+          }
+      })
+    );
     return theCompany;
   }
 
   save(company: Company) {
-    company.id = this.getLastId();
-    this.companies.push(company);
+    if (company.id != null) {
+      this.update(company);
+    } else {
+      this.add(company);
+    }
     this.companiesChanged.next();
+  }
+
+  add(newCompany: Company) {
+    newCompany.id = this.getLastId();
+    COMPANIES.push(newCompany);
+  }
+
+  update(modifiedCompany: Company) {
+    let oldCompany = this.getCompanyById(modifiedCompany.id);
+    oldCompany = modifiedCompany;
   }
 
   getLastId() {

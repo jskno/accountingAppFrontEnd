@@ -17,7 +17,13 @@ export class CompaniesComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.companies = this.companyService.getCompanies();
+    this.getCompanies();
+  }
+
+  private getCompanies(): void {
+    this.companyService.getCompanies().then(
+      companies => this.companies = companies
+    );
   }
 
   onNewCompany() {
