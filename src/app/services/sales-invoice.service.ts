@@ -23,4 +23,8 @@ export class SalesInvoiceService {
     );
     return theInvoice;
   }
+
+  // fetchSalesInvoices() {
+  //   return this.h
+  // }
 }
