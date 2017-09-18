@@ -6,27 +6,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-companies',
   templateUrl: './companies.component.html',
-  styleUrls: ['./companies.component.css'],
-  providers: [CompanyService]
+  styleUrls: ['./companies.component.css']
 })
-export class CompaniesComponent implements OnInit {
-  companies: Company[];
+export class CompaniesComponent {
 
-  constructor(private companyService: CompanyService,
-              private route: ActivatedRoute,
-              private router: Router) {}
-
-  ngOnInit(): void {
-    this.getCompanies();
-  }
-
-  private getCompanies(): void {
-    this.companyService.getCompanies().then(
-      companies => this.companies = companies
-    );
-  }
-
-  onNewCompany() {
-    this.router.navigate(['new'], {relativeTo: this.route});
-  }
 }

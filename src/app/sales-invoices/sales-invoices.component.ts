@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./sales-invoices.component.css']
 })
 export class SalesInvoicesComponent {
-  salesInvoices: string;
+
 }

@@ -132,4 +132,8 @@ export class CompanyService {
     return body || {};
   }
 
+  getEmptyCompany() {
+    return new Company(null, null, null, null, null , null);
+  }
+
 }
