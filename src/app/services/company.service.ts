@@ -112,7 +112,7 @@ export class CompanyService {
     return this.http
       .post('http://localhost:8081/accounting/company/new', newCompany, options)
       .map(response => {
-        const data = response.json() as Company[];
+        const data = response.json();
         return data || {};
       })
       .catch(
