@@ -79,6 +79,6 @@ export class SalesInvoiceService extends AbstractService {
   }
 
   getEmptySalesInvoice() {
-    return new SalesInvoice(null, null, null, null, null, null);
+    return new SalesInvoice(null, null, null, null, null, null, null, null);
   }
 }

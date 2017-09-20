@@ -15,7 +15,9 @@ export const SALES_INVOICES: SalesInvoice[] = [
         'jskno@yahoo.es'
       ),
       100,
-      21
+      21,
+      21,
+      121
     ),
     new SalesInvoice(
       2,
@@ -30,6 +32,8 @@ export const SALES_INVOICES: SalesInvoice[] = [
         'raquel@yahoo.es'
       ),
       200,
-      21
+      21,
+      42,
+      242
     ),
 ];
