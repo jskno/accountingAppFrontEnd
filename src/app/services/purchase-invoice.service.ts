@@ -8,7 +8,7 @@ import {PURCHASE_INV_CLASS_DATA} from '../mock-data/mock-purchase-invoice-class-
 import {Purchase} from '../model/purchase.model';
 import {Http} from '@angular/http';
 import {AbstractService} from './abstract.service';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PurchaseInvoiceService extends AbstractService {
