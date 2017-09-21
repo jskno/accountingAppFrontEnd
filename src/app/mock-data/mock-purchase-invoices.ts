@@ -15,7 +15,9 @@ export const PURCHASE_INVOICES: PurchaseInvoice[] = [
       'jskno@yahoo.es'
     ),
     100,
-    21
+    21,
+    21,
+    121
   ),
   new PurchaseInvoice(
     2,
@@ -30,6 +32,8 @@ export const PURCHASE_INVOICES: PurchaseInvoice[] = [
       'alvaro@yahoo.es'
     ),
     200,
-    21
+    21,
+    21,
+    121
   )
 ];

@@ -1,19 +1,12 @@
 import {Company} from './company.model';
-export class PurchaseInvoice {
+import {Invoice} from './invoice.model';
+export class PurchaseInvoice extends Invoice {
   public id: number;
-  public invoiceNumber: string;
-  public date: Date;
-  public company: Company;
-  public amount: number;
-  public vat: number;
 
-  constructor(id: number, invoiceNumber: string, date: Date, company: Company, amount: number, vat: number) {
+  constructor(id: number, invoiceNumber: string, date: Date, company: Company, amount: number,
+                vatPercentage: number, vatAmount: number, totalInvoice: number) {
+    super(invoiceNumber, date, company, amount, vatPercentage, vatAmount, totalInvoice);
     this.id = id;
-    this.invoiceNumber = invoiceNumber;
-    this.date = date;
-    this.company = company;
-    this.amount = amount;
-    this.vat = vat;
   }
 
 }
