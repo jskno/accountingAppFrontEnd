@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <app-sales-invoice-item
+      *ngFor="let salesInvoiceEl of salesInvoices"
+      [salesInvoice]="salesInvoiceEl">
+    </app-sales-invoice-item>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewSalesInvoice()">New Sales Invoice</button>
+  </div>
+</div>

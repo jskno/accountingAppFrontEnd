@@ -46,7 +46,7 @@ export class PurchaseInvoiceService extends AbstractService {
     let theInvoiceClassData = null;
     this.getPurchaseInvoicesClassData().then(
       invoicesClass => invoicesClass.forEach((invoice) => {
-        if (invoice.id === id) {
+        if (invoice.invoiceId === id) {
           theInvoiceClassData = invoice;
         }
       })
@@ -84,8 +84,8 @@ export class PurchaseInvoiceService extends AbstractService {
       );
   }
 
-  save(purchase: Purchase) {
-    return this.http.post(this.BASEURL + this.SAVE_PURCHASE, purchase, this.options)
+  save(purchaseInvoice: PurchaseInvoice) {
+    return this.http.post(this.BASEURL + this.SAVE_PURCHASE, purchaseInvoice, this.options)
       .map(response => {
         const data = response.json();
         return data || {};
@@ -106,6 +106,6 @@ export class PurchaseInvoiceService extends AbstractService {
   }
 
   getEmptyPurchaseInvClassifData() {
-    return new PurchaseInvClassifData(null, null, null, null, null, null);
+    return new PurchaseInvClassifData(null, null, null, null, null, null, null);
   }
 }

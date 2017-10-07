@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ company.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div
+      class="btn-group"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Manage Company <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a (click)="createInvoice()" style="cursor: pointer;">Add Invoice of this company</a></li>
+        <li><a style="cursor: pointer;" (click)="onEditCompany()">Edit Company</a></li>
+        <li><a style="cursor: pointer;">Delete Company</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ company.cif }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+
+  </div>
+</div>

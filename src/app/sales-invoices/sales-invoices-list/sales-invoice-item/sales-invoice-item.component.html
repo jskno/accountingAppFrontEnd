@@ -1,0 +1,10 @@
+<a
+  style="cursor: pointer;"
+  [routerLink]="[salesInvoice.id]"
+  routerLinkActive="active"
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ salesInvoice.id }}</h4>
+    <p class="list-group-item-text">{{ salesInvoice.amount }}</p>
+  </div>
+</a>

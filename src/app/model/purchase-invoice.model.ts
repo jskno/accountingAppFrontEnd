@@ -1,7 +1,10 @@
 import {Company} from './company.model';
 import {Invoice} from './invoice.model';
+import {PurchaseInvClassifData} from './purchase-inv-classif-data.model';
+
 export class PurchaseInvoice extends Invoice {
   public id: number;
+  public purchaseInvClassifData: PurchaseInvClassifData;
 
   constructor(id: number, invoiceNumber: string, date: Date, company: Company, amount: number,
                 vatPercentage: number, vatAmount: number, totalInvoice: number) {

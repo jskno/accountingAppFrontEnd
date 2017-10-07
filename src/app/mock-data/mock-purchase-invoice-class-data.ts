@@ -6,6 +6,7 @@ export const PURCHASE_INV_CLASS_DATA: PurchaseInvClassifData[] = [
       1,
       new ExpenseType(1, 'Combustible', false),
       true,
+      100,
       new ExpenseType(1, 'Combustible', false),
       'Amortizacion acelerada',
       32
@@ -14,6 +15,7 @@ export const PURCHASE_INV_CLASS_DATA: PurchaseInvClassifData[] = [
       2,
       new ExpenseType(2, 'Material Informatico', false),
       true,
+      100,
       new ExpenseType(2, 'Material Informatico', false),
       null,
       null

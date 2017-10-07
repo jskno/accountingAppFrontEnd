@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ purchase.purchaseInvoice.invoiceNumber }}</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    {{ purchase.purchaseInvoice.date }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ purchase.purchaseInvoice.amount}} - {{ purchase.purchaseInvoice.vatAmount }}
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div
+      class="btn-group"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Manage Recipe <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer;" (click)="onEditPurchaseInvoice()">Edit Purchase Invoice</a></li>
+        <li><a style="cursor: pointer;" (click)="onEditPurchaseGrouping()" style="cursor: pointer;">Edit Purchase Grouping</a></li>
+        <li><a style="cursor: pointer;">Delete Purchase Invoice</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
