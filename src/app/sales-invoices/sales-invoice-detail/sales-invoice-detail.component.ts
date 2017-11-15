@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SalesInvoice} from '../../model/sales-invoice.model';
+import {SalesInvoice} from '../model/sales-invoice.model';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {SalesInvoiceService} from '../../services/sales-invoice.service';
 

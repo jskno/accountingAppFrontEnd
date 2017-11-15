@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HelperService} from '../../services/helper.service';
-import {Company} from '../../model/company.model';
+import {Company} from '../../companies/model/company.model';
 import {PurchaseInvoiceService} from '../../services/purchase-invoice.service';
 import {CompanyService} from '../../services/company.service';
 import {ActivatedRoute, Params} from '@angular/router';
-import {PurchaseInvoice} from '../../model/purchase-invoice.model';
-import {PurchaseInvClassifData} from '../../model/purchase-inv-classif-data.model';
+import {PurchaseInvoice} from '../model/purchase-invoice.model';
+import {PurchaseInvClassifData} from '../model/purchase-inv-classif-data.model';
 
 @Component({
   selector: 'app-purchase-invoice-edit',

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SalesInvoice} from '../../../model/sales-invoice.model';
+import {SalesInvoice} from '../../model/sales-invoice.model';
 
 @Component({
   selector: 'app-sales-invoice-item',

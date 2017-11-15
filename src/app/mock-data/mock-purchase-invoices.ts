@@ -1,5 +1,5 @@
-import {PurchaseInvoice} from '../model/purchase-invoice.model';
-import {Company} from '../model/company.model';
+import {PurchaseInvoice} from '../purchase-invoices/model/purchase-invoice.model';
+import {Company} from '../companies/model/company.model';
 
 export const PURCHASE_INVOICES: PurchaseInvoice[] = [
   new PurchaseInvoice(

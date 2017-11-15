@@ -1,5 +1,5 @@
-import {PurchaseInvClassifData} from '../model/purchase-inv-classif-data.model';
-import {ExpenseType} from '../model/expense-type.model';
+import {PurchaseInvClassifData} from '../purchase-invoices/model/purchase-inv-classif-data.model';
+import {ExpenseType} from '../shared/model/expense-type.model';
 
 export const PURCHASE_INV_CLASS_DATA: PurchaseInvClassifData[] = [
     new PurchaseInvClassifData(

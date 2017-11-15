@@ -3,8 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Params} from '@angular/router';
 import {SalesInvoiceService} from '../../services/sales-invoice.service';
 import {CompanyService} from '../../services/company.service';
-import {Company} from '../../model/company.model';
-import {SalesInvoice} from '../../model/sales-invoice.model';
+import {Company} from '../../companies/model/company.model';
+import {SalesInvoice} from '../model/sales-invoice.model';
 
 @Component({
   selector: 'app-sales-invoice-edit',

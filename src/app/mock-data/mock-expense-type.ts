@@ -1,4 +1,4 @@
-import {ExpenseType} from '../model/expense-type.model';
+import {ExpenseType} from '../shared/model/expense-type.model';
 
 export const EXPENSE_TYPES: ExpenseType[] = [
   {

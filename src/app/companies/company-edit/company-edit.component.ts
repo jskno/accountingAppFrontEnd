@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Company} from '../../model/company.model';
+import {Company} from '../model/company.model';
 import {CompanyService} from '../../services/company.service';
 import {ActivatedRoute, Params} from '@angular/router';
 

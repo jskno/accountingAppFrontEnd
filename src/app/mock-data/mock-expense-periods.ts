@@ -1,4 +1,4 @@
-import {ExpensePeriod} from '../model/expense-period.model';
+import {ExpensePeriod} from '../shared/model/expense-period.model';
 
 export const EXPENSE_PERIODS: ExpensePeriod[] = [
   {

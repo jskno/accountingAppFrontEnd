@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {PurchaseInvoice} from '../../model/purchase-invoice.model';
+import {PurchaseInvoice} from '../model/purchase-invoice.model';
 import {PurchaseInvoiceService} from '../../services/purchase-invoice.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Purchase} from '../../model/purchase.model';
+import {Purchase} from '../model/purchase.model';
 
 @Component({
   selector: 'app-purchase-invoice-detail',
@@ -10,7 +10,7 @@ import {Purchase} from '../../model/purchase.model';
   styleUrls: ['./purchase-invoice-detail.component.css']
 })
 export class PurchaseInvoiceDetailComponent implements OnInit {
-  purchase: Purchase;
+  purchaseInvoice: PurchaseInvoice = this.purchaseInvoiceService.getEmptyPurchaseInvoice();
   id: number;
 
   constructor(private purchaseInvoiceService: PurchaseInvoiceService,
@@ -24,7 +24,7 @@ export class PurchaseInvoiceDetailComponent implements OnInit {
           this.id = +params['id'];
           this.purchaseInvoiceService.fetchPurchaseById(this.id)
             .subscribe(
-              (purchase: Purchase) => this.purchase = purchase
+              (purchaseInvoice: PurchaseInvoice) => this.purchaseInvoice = purchaseInvoice
             );
         }
       )

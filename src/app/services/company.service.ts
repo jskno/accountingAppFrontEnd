@@ -1,4 +1,4 @@
-import {Company} from '../model/company.model';
+import {Company} from '../companies/model/company.model';
 import {Subject} from 'rxjs/Subject';
 import {COMPANIES} from '../mock-data/mock-companies';
 import {Injectable} from '@angular/core';

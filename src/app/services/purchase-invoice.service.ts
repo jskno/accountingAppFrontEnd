@@ -1,20 +1,22 @@
-import {PurchaseInvoice} from '../model/purchase-invoice.model';
+import {PurchaseInvoice} from '../purchase-invoices/model/purchase-invoice.model';
 import {Injectable} from '@angular/core';
 import {CompanyService} from './company.service';
-import {PurchaseInvClassifData} from '../model/purchase-inv-classif-data.model';
+import {PurchaseInvClassifData} from '../purchase-invoices/model/purchase-inv-classif-data.model';
 import {HelperService} from './helper.service';
 import {PURCHASE_INVOICES} from '../mock-data/mock-purchase-invoices';
 import {PURCHASE_INV_CLASS_DATA} from '../mock-data/mock-purchase-invoice-class-data';
-import {Purchase} from '../model/purchase.model';
+import {Purchase} from '../purchase-invoices/model/purchase.model';
 import {Http} from '@angular/http';
 import {AbstractService} from './abstract.service';
 import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class PurchaseInvoiceService extends AbstractService {
   FETCH_INVOICES = '/invoice/purchase/all';
   FETCH_INVOICE_BY_ID = '/invoice/purchase';
   SAVE_PURCHASE = '/invoice/purchase/new';
+  purchaseInvoicesChanged = new Subject();
 
   constructor(private companyService: CompanyService,
               private helperService: HelperService,
@@ -58,7 +60,7 @@ export class PurchaseInvoiceService extends AbstractService {
     return this.http
       .get(this.BASEURL + this.FETCH_INVOICES)
       .map(response => {
-        const data = response.json() as Purchase[];
+        const data = response.json() as PurchaseInvoice[];
         return data;
       })
       .catch(
@@ -72,9 +74,9 @@ export class PurchaseInvoiceService extends AbstractService {
     const params = new URLSearchParams();
     params.set('id', id.toString());
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + id, this.options)
+      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + '/' + id, this.options)
       .map(response => {
-        const data = response.json() as Purchase;
+        const data = response.json() as PurchaseInvoice;
         return data;
       })
       .catch(
@@ -83,6 +85,11 @@ export class PurchaseInvoiceService extends AbstractService {
         }
       );
   }
+
+  // save(purchaseInvoice: PurchaseInvoice) {
+  //   this.savePurchase(purchaseInvoice);
+  //   this.purchaseInvoicesChanged.next();
+  // }
 
   save(purchaseInvoice: PurchaseInvoice) {
     return this.http.post(this.BASEURL + this.SAVE_PURCHASE, purchaseInvoice, this.options)

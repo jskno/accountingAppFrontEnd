@@ -1,4 +1,4 @@
-import {SalesInvoice} from '../model/sales-invoice.model';
+import {SalesInvoice} from '../sales-invoices/model/sales-invoice.model';
 import {Injectable} from '@angular/core';
 import {CompanyService} from './company.service';
 import {SALES_INVOICES} from '../mock-data/mock-sales-invoices';

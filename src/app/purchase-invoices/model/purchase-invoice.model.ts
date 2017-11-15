@@ -1,5 +1,5 @@
-import {Company} from './company.model';
-import {Invoice} from './invoice.model';
+import {Company} from '../../companies/model/company.model';
+import {Invoice} from '../../shared/model/invoice.model';
 import {PurchaseInvClassifData} from './purchase-inv-classif-data.model';
 
 export class PurchaseInvoice extends Invoice {

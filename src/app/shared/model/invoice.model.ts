@@ -1,4 +1,4 @@
-import {Company} from './company.model';
+import {Company} from '../../companies/model/company.model';
 
 export abstract class Invoice {
   public invoiceNumber: string;

@@ -1,4 +1,4 @@
-import {Company} from './company.model';
+import {Company} from '../../companies/model/company.model';
 export class SalesInvoice {
   public id: number;
   public invoiceNumber: string;

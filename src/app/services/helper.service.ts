@@ -1,5 +1,5 @@
-import {ExpenseType} from '../model/expense-type.model';
-import {ExpensePeriod} from '../model/expense-period.model';
+import {ExpenseType} from '../shared/model/expense-type.model';
+import {ExpensePeriod} from '../shared/model/expense-period.model';
 import {EXPENSE_TYPES} from "../mock-data/mock-expense-type";
 import {EXPENSE_PERIODS} from "../mock-data/mock-expense-periods";
 export class HelperService {

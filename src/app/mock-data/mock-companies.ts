@@ -1,4 +1,4 @@
-import {Company} from '../model/company.model';
+import {Company} from '../companies/model/company.model';
 
 export const COMPANIES: Company[] = [
     new Company(

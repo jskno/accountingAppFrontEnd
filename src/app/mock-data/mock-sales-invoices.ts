@@ -1,5 +1,5 @@
-import {SalesInvoice} from '../model/sales-invoice.model';
-import {Company} from '../model/company.model';
+import {SalesInvoice} from '../sales-invoices/model/sales-invoice.model';
+import {Company} from '../companies/model/company.model';
 
 export const SALES_INVOICES: SalesInvoice[] = [
     new SalesInvoice(

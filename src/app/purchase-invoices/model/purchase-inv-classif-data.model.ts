@@ -1,5 +1,5 @@
-import {ExpenseType} from './expense-type.model';
-import {ExpensePeriod} from './expense-period.model';
+import {ExpenseType} from '../../shared/model/expense-type.model';
+import {ExpensePeriod} from '../../shared/model/expense-period.model';
 import {PurchaseInvoice} from './purchase-invoice.model';
 
 export class PurchaseInvClassifData {
