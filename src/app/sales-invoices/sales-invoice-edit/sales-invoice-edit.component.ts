@@ -116,6 +116,7 @@ export class SalesInvoiceEditComponent implements OnInit {
         (transformedData: any) => {
           // Use your response data here
           console.log(transformedData);
+          this.salesInvoiceService.salesInvoicesChanged.next();
         }
       );
     this.salesInvoiceForm.reset();

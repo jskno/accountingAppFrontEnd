@@ -2,8 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PurchaseInvoiceService} from '../../services/purchase-invoice.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PurchaseInvoice} from '../model/purchase-invoice.model';
-import {Purchase} from "../model/purchase.model";
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-purchase-invoices-list',

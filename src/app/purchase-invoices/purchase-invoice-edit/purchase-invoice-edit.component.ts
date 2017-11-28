@@ -166,6 +166,7 @@ export class PurchaseInvoiceEditComponent implements OnInit {
         (transformedData: any) => {
           // Use your response data here
           console.log(transformedData);
+          this.purchaseInvoiceService.purchaseInvoicesChanged.next();
         }
       );
     this.purchaseInvoiceForm.reset();

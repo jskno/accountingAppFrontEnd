@@ -5,12 +5,20 @@ import {Injectable} from '@angular/core';
 import {Headers, Http, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
+import {AbstractService} from './abstract.service';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable()
-export class CompanyService {
+export class CompanyService extends AbstractService {
+  FETCH_COMPANIES = '/company/all';
+  FETCH_COMPANY_BY_ID = '/company/';
+  SAVE_COMPANY = '/company/new';
   companiesChanged = new Subject();
 
-  constructor(private http: Http) {}
+  constructor(private http: Http,
+              protected authService: AuthService) {
+    super(authService);
+  }
 
   getCompanies(): Promise<Company[]> {
     return Promise.resolve(COMPANIES.slice());
@@ -75,7 +83,7 @@ export class CompanyService {
 
   fetchCompanies() {
     return this.http
-      .get('http://localhost:8081/accounting/company/all')
+      .get(this.BASEURL + this.FETCH_COMPANIES, this.options)
       .map(response => {
         const data = response.json() as Company[];
         return data;
@@ -90,10 +98,8 @@ export class CompanyService {
   fetchCompanyById(id: number) {
     const params = new URLSearchParams();
     params.set('id', id.toString());
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({headers: headers});
     return this.http
-      .get('http://localhost:8081/accounting/company/' + id, options)
+      .get(this.BASEURL + this.FETCH_COMPANY_BY_ID + id, this.options)
       .map(response => {
         const data = response.json() as Company;
         return data;
@@ -107,14 +113,12 @@ export class CompanyService {
 
   addBE(newCompany: Company) {
     // newCompany.id = this.getLastId();
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({headers: headers});
     return this.http
-      .post('http://localhost:8081/accounting/company/new', newCompany, options)
-      .map(response => {
-        const data = response.json();
-        return data || {};
-      })
+      .post(this.BASEURL + this.SAVE_COMPANY, newCompany, this.options)
+      // .map(response => {
+      //   const data = response.json();
+      //   return data || {};
+      // })
       .catch(
         (error: Response) => {
           return Observable.throw('Something went wrong!');

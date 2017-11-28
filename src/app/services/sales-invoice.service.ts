@@ -6,16 +6,20 @@ import {Http} from '@angular/http';
 import {AbstractService} from './abstract.service';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
+import {AuthService} from '../auth/auth.service';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class SalesInvoiceService extends AbstractService {
   FETCH_INVOICES = '/invoice/sales/all';
-  FETCH_INVOICE_BY_ID = '/invoice/sales';
+  FETCH_INVOICE_BY_ID = '/invoice/sales/';
   SAVE_SALES_INVOICE = '/invoice/sales/new';
+  salesInvoicesChanged = new Subject();
 
   constructor(private companyService: CompanyService,
-              private http: Http) {
-    super();
+              private http: Http,
+              protected authService: AuthService) {
+    super(authService);
   }
 
   getSalesInvoices(): Promise<SalesInvoice[]> {
@@ -36,7 +40,7 @@ export class SalesInvoiceService extends AbstractService {
 
   fetchSalesInvoices() {
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICES)
+      .get(this.BASEURL + this.FETCH_INVOICES, this.options)
       .map(response => {
         const data = response.json() as SalesInvoice[];
         return data;

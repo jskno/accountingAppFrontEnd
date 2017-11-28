@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {PurchaseInvoice} from '../model/purchase-invoice.model';
 import {PurchaseInvoiceService} from '../../services/purchase-invoice.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {Purchase} from '../model/purchase.model';
 
 @Component({
   selector: 'app-purchase-invoice-detail',

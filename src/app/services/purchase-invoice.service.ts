@@ -10,18 +10,20 @@ import {Http} from '@angular/http';
 import {AbstractService} from './abstract.service';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class PurchaseInvoiceService extends AbstractService {
   FETCH_INVOICES = '/invoice/purchase/all';
-  FETCH_INVOICE_BY_ID = '/invoice/purchase';
+  FETCH_INVOICE_BY_ID = '/invoice/purchase/';
   SAVE_PURCHASE = '/invoice/purchase/new';
   purchaseInvoicesChanged = new Subject();
 
   constructor(private companyService: CompanyService,
               private helperService: HelperService,
-              private http: Http) {
-    super();
+              private http: Http,
+              protected authService: AuthService) {
+    super(authService);
   }
 
   getPurchaseInvoices() {
@@ -58,7 +60,7 @@ export class PurchaseInvoiceService extends AbstractService {
 
   fetchPurchases() {
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICES)
+      .get(this.BASEURL + this.FETCH_INVOICES, this.options)
       .map(response => {
         const data = response.json() as PurchaseInvoice[];
         return data;
@@ -74,7 +76,7 @@ export class PurchaseInvoiceService extends AbstractService {
     const params = new URLSearchParams();
     params.set('id', id.toString());
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + '/' + id, this.options)
+      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + id, this.options)
       .map(response => {
         const data = response.json() as PurchaseInvoice;
         return data;

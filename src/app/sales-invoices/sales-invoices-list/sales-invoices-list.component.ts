@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SalesInvoice} from '../model/sales-invoice.model';
 import {SalesInvoiceService} from '../../services/sales-invoice.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-sales-invoices-list',
@@ -9,6 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./sales-invoices-list.component.css']
 })
 export class SalesInvoicesListComponent implements OnInit {
+  salesInvoicesChangesSubscription = new Subscription();
   salesInvoices: SalesInvoice[];
 
   constructor(private salesInvoiceService: SalesInvoiceService,
@@ -17,6 +19,12 @@ export class SalesInvoicesListComponent implements OnInit {
 
   ngOnInit() {
     this.fetchSalesInvoices();
+    this.salesInvoicesChangesSubscription = this.salesInvoiceService.salesInvoicesChanged
+      .subscribe(
+        () => {
+          this.fetchSalesInvoices();
+        }
+      )
   }
 
   private getSalesInvoices(): void {
@@ -30,6 +38,9 @@ export class SalesInvoicesListComponent implements OnInit {
       .subscribe(
         (invoices: SalesInvoice[]) => this.salesInvoices = invoices
       );
+  }
+  onDestroy() {
+    this.salesInvoicesChangesSubscription.unsubscribe();
   }
 
   onNewSalesInvoice() {

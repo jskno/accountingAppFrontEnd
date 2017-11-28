@@ -9,7 +9,7 @@ import {SalesInvoiceService} from '../../services/sales-invoice.service';
   styleUrls: ['./sales-invoice-detail.component.css']
 })
 export class SalesInvoiceDetailComponent implements OnInit {
-  salesInvoice: SalesInvoice;
+  salesInvoice: SalesInvoice = this.salesInvoiceService.getEmptySalesInvoice();
   id: number;
 
   constructor(private salesInvoiceService: SalesInvoiceService,
@@ -21,7 +21,10 @@ export class SalesInvoiceDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.salesInvoice = this.salesInvoiceService.getSalesInvoice(this.id);
+          this.salesInvoiceService.fetchSalesInvoiceById(this.id)
+            .subscribe(
+              (salesInvoice: SalesInvoice) => this.salesInvoice = salesInvoice
+            );
         }
       )
   }
