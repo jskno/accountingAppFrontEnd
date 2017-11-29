@@ -7,9 +7,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
-  token: string;
-  // private authUrl = 'http://localhost:8082/auth';
-  private authUrl = 'http://35.158.129.219:8082/auth';
+  private authUrl = 'http://localhost:8082/auth';
+  // private authUrl = 'http://35.158.129.219:8082/auth';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({headers: this.headers});
 
@@ -27,7 +26,6 @@ export class AuthService {
         if (token) {
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
-          this.token = token;
           // return true to indicate successful login
           return true;
         } else {
@@ -44,12 +42,11 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    return this.token != null;
+    return this.getToken() !== '';
   }
 
   logout() {
     // clear token remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-    this.token = null;
   }
 }

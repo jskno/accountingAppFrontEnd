@@ -40,7 +40,7 @@ export class SalesInvoiceService extends AbstractService {
 
   fetchSalesInvoices() {
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICES, this.options)
+      .get(this.BASEURL + this.FETCH_INVOICES, this.getOptions())
       .map(response => {
         const data = response.json() as SalesInvoice[];
         return data;
@@ -56,7 +56,7 @@ export class SalesInvoiceService extends AbstractService {
     const params = new URLSearchParams();
     params.set('id', id.toString());
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + id, this.options)
+      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + id, this.getOptions())
       .map(response => {
         const data = response.json() as SalesInvoice;
         return data;
@@ -70,7 +70,7 @@ export class SalesInvoiceService extends AbstractService {
 
   save(salesInvoice: SalesInvoice) {
     return this.http
-      .post(this.BASEURL + this.SAVE_SALES_INVOICE, salesInvoice, this.options)
+      .post(this.BASEURL + this.SAVE_SALES_INVOICE, salesInvoice, this.getOptions())
       .map(response => {
         const data = response.json();
         return data || {};

@@ -60,7 +60,7 @@ export class PurchaseInvoiceService extends AbstractService {
 
   fetchPurchases() {
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICES, this.options)
+      .get(this.BASEURL + this.FETCH_INVOICES, this.getOptions())
       .map(response => {
         const data = response.json() as PurchaseInvoice[];
         return data;
@@ -76,7 +76,7 @@ export class PurchaseInvoiceService extends AbstractService {
     const params = new URLSearchParams();
     params.set('id', id.toString());
     return this.http
-      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + id, this.options)
+      .get(this.BASEURL + this.FETCH_INVOICE_BY_ID + id, this.getOptions())
       .map(response => {
         const data = response.json() as PurchaseInvoice;
         return data;
@@ -94,7 +94,7 @@ export class PurchaseInvoiceService extends AbstractService {
   // }
 
   save(purchaseInvoice: PurchaseInvoice) {
-    return this.http.post(this.BASEURL + this.SAVE_PURCHASE, purchaseInvoice, this.options)
+    return this.http.post(this.BASEURL + this.SAVE_PURCHASE, purchaseInvoice, this.getOptions())
       .map(response => {
         const data = response.json();
         return data || {};

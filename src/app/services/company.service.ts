@@ -83,7 +83,7 @@ export class CompanyService extends AbstractService {
 
   fetchCompanies() {
     return this.http
-      .get(this.BASEURL + this.FETCH_COMPANIES, this.options)
+      .get(this.BASEURL + this.FETCH_COMPANIES, this.getOptions())
       .map(response => {
         const data = response.json() as Company[];
         return data;
@@ -99,7 +99,7 @@ export class CompanyService extends AbstractService {
     const params = new URLSearchParams();
     params.set('id', id.toString());
     return this.http
-      .get(this.BASEURL + this.FETCH_COMPANY_BY_ID + id, this.options)
+      .get(this.BASEURL + this.FETCH_COMPANY_BY_ID + id, this.getOptions())
       .map(response => {
         const data = response.json() as Company;
         return data;
@@ -114,7 +114,7 @@ export class CompanyService extends AbstractService {
   addBE(newCompany: Company) {
     // newCompany.id = this.getLastId();
     return this.http
-      .post(this.BASEURL + this.SAVE_COMPANY, newCompany, this.options)
+      .post(this.BASEURL + this.SAVE_COMPANY, newCompany, this.getOptions())
       // .map(response => {
       //   const data = response.json();
       //   return data || {};
