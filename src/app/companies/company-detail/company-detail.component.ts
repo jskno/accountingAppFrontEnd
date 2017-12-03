@@ -21,12 +21,20 @@ export class CompanyDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.companyService.fetchCompanyById(this.id)
-            .subscribe(
-              (company: Company) => this.company = company
-            );
+          this.fetchCompanyById(this.id);
         }
       )
+  }
+
+  private getCompanyById(id: number) {
+    this.company = this.companyService.getCompanyById(id);
+  }
+
+  private fetchCompanyById(id: number) {
+    this.companyService.fetchCompanyById(this.id)
+      .subscribe(
+        (company: Company) => this.company = company
+      );
   }
 
   onEditCompany() {

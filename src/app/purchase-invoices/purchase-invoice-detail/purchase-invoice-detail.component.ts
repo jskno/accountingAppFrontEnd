@@ -21,12 +21,20 @@ export class PurchaseInvoiceDetailComponent implements OnInit {
       .subscribe(
         (params: Params) => {
           this.id = +params['id'];
-          this.purchaseInvoiceService.fetchPurchaseById(this.id)
-            .subscribe(
-              (purchaseInvoice: PurchaseInvoice) => this.purchaseInvoice = purchaseInvoice
-            );
+          this.fetchPurchaseById(this.id);
         }
       )
+  }
+
+  private getPurchaseById(id: number) {
+    this.purchaseInvoice = this.purchaseInvoiceService.getPurchaseInvoiceById(id);
+  }
+
+  private fetchPurchaseById(id: number) {
+    this.purchaseInvoiceService.fetchPurchaseById(this.id)
+      .subscribe(
+        (purchaseInvoice: PurchaseInvoice) => this.purchaseInvoice = purchaseInvoice
+      );
   }
 
   onEditPurchaseInvoice() {

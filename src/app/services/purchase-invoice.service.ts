@@ -34,7 +34,7 @@ export class PurchaseInvoiceService extends AbstractService {
     return Promise.resolve(PURCHASE_INV_CLASS_DATA.slice());
   }
 
-  getPurchaseInvoice(id: number) {
+  getPurchaseInvoiceById(id: number) {
     let theInvoice = null;
     this.getPurchaseInvoices().then(
       invoices => invoices.forEach((invoice) => {

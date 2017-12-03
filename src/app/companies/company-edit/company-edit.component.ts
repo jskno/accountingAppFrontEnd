@@ -44,7 +44,7 @@ export class CompanyEditComponent implements OnInit {
       'address': new FormControl(address),
       'telephone': new FormControl(telephone),
       'email': new FormControl(email, [Validators.email])
-    })
+    });
 
     if (this.editMode) {
       this.companyService.fetchCompanyById(this.id)
@@ -68,8 +68,6 @@ export class CompanyEditComponent implements OnInit {
           }
         );
     }
-
-
   }
 
   onSubmit() {
