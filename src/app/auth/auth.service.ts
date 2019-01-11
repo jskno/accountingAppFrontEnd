@@ -7,8 +7,8 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
-  // private authUrl = 'http://localhost:8082/auth';
-  private authUrl = 'http://35.158.129.219:8082/auth';
+  private authUrl = 'http://localhost:8082/auth';
+  // private authUrl = 'http://35.158.129.219:8082/auth';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({headers: this.headers});
 

@@ -23,10 +23,10 @@ import {SharedModule} from './shared/shared.module';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
-    SharedModule,
     CompaniesModule,
     PurchaseInvoicesModule,
     SalesInvoicesModule,
+    SharedModule,
     AuthModule,
     CoreModule
   ],
